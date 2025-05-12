@@ -102,9 +102,24 @@ class User(UserMixin):
             return User(id=row[0], username=row[1], password=row[2])
         return None
 
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.get(user_id)
+
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    import sqlite3
+    conn = sqlite3.connect(os.environ.get("DATABASE_URL", "api/database.sqlite"))
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM user WHERE u_userId = ?", (user_id,))
+    row = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    if row:
+        return User(row["u_userId"], row["u_username"], row["u_password"])
+    return None
 
 @app.route('/logout')
 @login_required
