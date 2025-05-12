@@ -40,7 +40,9 @@ def is_vercel_origin(origin):
         return False
 
 # CORS(app, supports_credentials=True, origins=[is_vercel_origin, 'https://localhost:5173'])
-CORS(app, supports_credentials=True, origins=is_vercel_origin)
+# CORS(app, supports_credentials=True, origins=is_vercel_origin)
+CORS(app, resources={r"/*": {"origins": "https://cse108finalproject.vercel.app"}}, supports_credentials=True)
+
 
 
 DB_FILE = "database.sqlite"
@@ -503,4 +505,6 @@ def unfollow():
     return jsonify({'status': 'unfollowed'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
