@@ -109,45 +109,80 @@ def closeConnection(_conn, _dbFile):
     except Error as e:
         print(e)
 
-# Create a new user
-@app.route('/register', methods=['POST'])
+
+@app.route("/register", methods=["POST"])
 def register():
-    data = request.json
-
-    # Extract data
-    username = data.get('username')
-    password = data.get('password')
-    first_name = data.get('firstName')
-    last_name = data.get('lastName')
-
-    if not username or not password:
-        return jsonify({'error': 'Username and password are required'}), 400
-
-    # Hash the password
-    hashed_password = bcrypt.hash(password)
-    bcrypt.verify(password, hashed_password)
-
     try:
-        conn = openConnection(DB_FILE)
-        cursor = conn.cursor()
+        data = request.get_json()
+        print("Received data:", data)
 
-        query = '''
+        username = data.get("username")
+        password = data.get("password")
+        first_name = data.get("firstName")
+        last_name = data.get("lastName")
+
+        if not username or not password:
+            return jsonify({"error": "Username and password required"}), 400
+
+        # Assuming you're using passlib or bcrypt correctly here
+        hashed_password = bcrypt.hash(password)
+
+        conn = openConnection()
+        cursor = conn.cursor()
+        cursor.execute('''
             INSERT INTO user (u_username, u_password, u_firstName, u_lastName)
             VALUES (?, ?, ?, ?)
-        '''
-        values = (username, hashed_password, first_name, last_name)
-        cursor.execute(query, values)
+        ''', (username, hashed_password, first_name, last_name))
         conn.commit()
+        cursor.close()
+        conn.close()
 
-        return jsonify({'message': 'User registered successfully'}), 201
+        return jsonify({"message": "User registered successfully"}), 201
 
-    except sqlite3.Error as err:
-        return jsonify({'error': str(err)}), 500
+    except Exception as e:
+        print("🔥 Registration error:", str(e))  # This will show in Render logs
+        return jsonify({"error": str(e)}), 500
 
-    finally:
-        if cursor:
-            cursor.close()
-        closeConnection(conn, DB_FILE)
+
+# Create a new user
+# @app.route('/register', methods=['POST'])
+# def register():
+#     data = request.json
+
+#     # Extract data
+#     username = data.get('username')
+#     password = data.get('password')
+#     first_name = data.get('firstName')
+#     last_name = data.get('lastName')
+
+#     if not username or not password:
+#         return jsonify({'error': 'Username and password are required'}), 400
+
+#     # Hash the password
+#     hashed_password = bcrypt.hash(password)
+#     bcrypt.verify(password, hashed_password)
+
+#     try:
+#         conn = openConnection(DB_FILE)
+#         cursor = conn.cursor()
+
+#         query = '''
+#             INSERT INTO user (u_username, u_password, u_firstName, u_lastName)
+#             VALUES (?, ?, ?, ?)
+#         '''
+#         values = (username, hashed_password, first_name, last_name)
+#         cursor.execute(query, values)
+#         conn.commit()
+
+#         return jsonify({'message': 'User registered successfully'}), 201
+
+#     except sqlite3.Error as err:
+#         return jsonify({'error': str(err)}), 500
+
+#     finally:
+#         if cursor:
+#             cursor.close()
+#         closeConnection(conn, DB_FILE)
 
 @app.route('/login', methods=['POST'])
 def login():
