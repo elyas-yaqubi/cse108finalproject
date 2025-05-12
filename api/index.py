@@ -24,6 +24,12 @@ app = Flask(__name__)
 
 app.secret_key = os.environ.get("SECRET_KEY", "dev-secret")
 
+app.config.update(
+    SESSION_COOKIE_SAMESITE="None",
+    SESSION_COOKIE_SECURE=True
+)
+
+
 
 # Read environment variable
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-fallback')
