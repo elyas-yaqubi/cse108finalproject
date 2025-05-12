@@ -25,7 +25,7 @@ app = Flask(__name__)
 # Read environment variable
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-fallback')
 db_path = os.environ.get('DATABASE_URL', 'fallback.db')
-
+DB_PATH = os.environ.get("DATABASE_URL", "api/database.sqlite")
 
 # app.secret_key = 'muchSecretVeryKey'
 
