@@ -216,7 +216,7 @@ def login():
     password = data.get('password')
 
     user = User.get_by_username(username)
-    if user and bcrypt.verify(password, user.password):
+    if user and bcrypt.verify(password, user[2]):  # 2 is the hashed password
         login_user(user)
         return jsonify({'message': 'Login successful'}), 200
     return jsonify({'error': 'Invalid username or password'}), 401
