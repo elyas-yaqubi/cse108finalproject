@@ -126,7 +126,7 @@ def ping():
 def register():
     try:
         data = request.get_json()
-        print("Received data:", data)
+        logger.info("Received data: %s", data)
 
         username = data.get("username")
         password = data.get("password")
@@ -134,25 +134,29 @@ def register():
         last_name = data.get("lastName")
 
         if not username or not password:
+            logger.warning("Missing username or password")
             return jsonify({"error": "Username and password required"}), 400
 
-        # Assuming you're using passlib or bcrypt correctly here
         hashed_password = bcrypt.hash(password)
+        logger.info("Password hashed successfully")
 
-        conn = openConnection()
+        conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
+
         cursor.execute('''
             INSERT INTO user (u_username, u_password, u_firstName, u_lastName)
             VALUES (?, ?, ?, ?)
         ''', (username, hashed_password, first_name, last_name))
+
         conn.commit()
         cursor.close()
         conn.close()
 
+        logger.info("✅ User registered successfully")
         return jsonify({"message": "User registered successfully"}), 201
 
     except Exception as e:
-        print("🔥 Registration error:", str(e))  # This will show in Render logs
+        logger.error("🔥 Registration error: %s", repr(e))
         return jsonify({"error": str(e)}), 500
 
 
