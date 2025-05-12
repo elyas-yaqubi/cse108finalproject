@@ -1,9 +1,9 @@
 # Run in root directory
 
 # install react dependencies
-Set-Location .\fits-app
+# Set-Location .\fits-app
 npm install
-Set-Location ..
+# Set-Location ..
 npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 npm install react-router-dom
 

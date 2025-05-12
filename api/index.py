@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify, make_response
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user, UserMixin
 from flask_cors import CORS
@@ -11,6 +12,12 @@ from base64 import b64encode
 import random
 
 app = Flask(__name__)
+
+# Read environment variable
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-fallback')
+db_path = os.environ.get('DATABASE_URL', 'fallback.db')
+
+
 app.secret_key = 'muchSecretVeryKey'
 
 login_manager = LoginManager()
