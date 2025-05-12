@@ -1,0 +1,9 @@
+.source{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    align-items: center;
+    background-color: #375676;
+    height:100%;
+    width:100%;
+}

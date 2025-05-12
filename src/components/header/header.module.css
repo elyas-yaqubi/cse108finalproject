@@ -1,0 +1,22 @@
+.source{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0D1B2A;
+    height:100%;
+    width:100%;
+}
+
+.button{
+    width:100px;
+    height:50px;
+    border: none;
+    background-color: #375676;
+    border-radius: 5px;
+}
+
+.titleContainer{
+    font-size: 50px;
+    font-family: 'Blippo', fantasy;
+}

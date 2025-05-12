@@ -1,0 +1,94 @@
+:global(body, html, #root) {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height:15%;
+    width:100%;
+}
+
+.body {
+    display:flex;
+    flex-direction: row;
+    height:85%;
+}
+
+.sidebar {
+    height:100%;
+    width:10%;
+}
+
+.content {
+    height:100%;
+    width:80%;
+    background-color: #152b43;
+    display:flex;
+    justify-content: center;
+}
+
+.followBar {
+    height:100%;
+    width:10%;    
+}
+
+.pad {
+    height: 100%;
+    width: 90%;
+    background-color: #112336;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.postCard {
+    background-color: #375676;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.postCard img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.postCard p {
+    margin: 0;
+    padding: 10px;
+    height: 30%;
+    overflow: hidden;
+    font-size: 14px;
+    color: white;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.postCard p::-webkit-scrollbar {
+  display: none;
+}
+
+.pad::-webkit-scrollbar {
+  display: none;
+}
+
+.button {
+    background-color: #375676;
+    border: none;
+}

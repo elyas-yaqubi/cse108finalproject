@@ -1,0 +1,106 @@
+:global(body, html, #root) {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height:15%;
+    width:100%;
+}
+
+.body {
+    display:flex;
+    flex-direction: row;
+    height:85%;
+}
+
+.sidebar {
+    height:100%;
+    width:10%;
+}
+
+.contentContainer {
+    display: flex;
+    justify-content: center;
+    height:100%;
+    width:80%;
+    background-color: #152b43;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+.followBar {
+    height:100%;
+    width:10%;    
+}
+
+.searchBar {
+    height: 50px;
+    width: 600px;
+    background-color: #112336;
+    border:none;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.searchBar::placeholder {
+    color:white;
+}
+
+.resultContainer {
+    width:100%;
+    height:150px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pad {
+    width:70%;
+    height:100%;
+}
+
+.iconContainer{
+    height:100%;
+    width: 25%;
+}
+
+.dataContainer {
+    height:100%;
+    width: 75%;
+}
+
+.padding {
+    width:100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.followButton {
+    width: 500px;
+    height: 50px;
+    color:white;
+    background-color: #375676;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+.username {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+}

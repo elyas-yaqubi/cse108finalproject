@@ -1,0 +1,97 @@
+:global(body, html, #root) {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height:15%;
+    width:100%;
+}
+
+.body {
+    display:flex;
+    flex-direction: row;
+    height:85%;
+}
+
+.sidebar {
+    height:100%;
+    width:10%;
+}
+
+.contentContainer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    width:80%;
+    background-color: #152b43;
+}
+.content {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 90%;
+    border-radius: 5px;
+}
+
+.followBar {
+    height:100%;
+    width:10%;    
+}
+
+.form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.description {
+    width: 600px;
+    height:100px;
+    background-color: #112336;
+    color: white;
+    border-radius: 5px;
+}
+.description::placeholder {
+  color: white;
+}
+
+.postBtn {
+    width:300px;
+    height:50px;
+    background-color: #112336;
+    color: white;
+    border-radius: 5px;
+}
+
+.imgInput {
+    width: 600px;
+    height: 300px;
+    background-color: #112336;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.imgPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}

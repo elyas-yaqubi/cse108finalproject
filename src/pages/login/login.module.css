@@ -1,0 +1,90 @@
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #0D1B2A;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.loginWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #0D1B2A;
+}
+
+.loginCard {
+  background-color: #375676;
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;  
+}
+
+.loginCard h1 {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 2rem;
+}
+
+.loginInput {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  margin: 10px 0;
+  background-color: #213345;
+  border: none;
+  border-radius: 32px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background-color: #0D1B2A;
+  border: none;
+  border-radius: 32px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginFooter {
+  color: white;
+  margin-top: 24px;
+  font-weight: bold;
+}
+
+.loginFooter a {
+  color: white;
+  text-decoration: underline;
+}

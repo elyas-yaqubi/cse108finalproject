@@ -1,0 +1,146 @@
+:global(body, html, #root) {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height:15%;
+    width:100%;
+}
+
+.body {
+    display:flex;
+    flex-direction: row;
+    height:85%;
+}
+
+.sidebar {
+    height:100%;
+    width:10%;
+}
+
+.content {
+    display: flex;
+    height:100%;
+    width:80%;
+    background-color: #152b43;
+    justify-content: center;
+}
+
+.followBar {
+    height:100%;
+    width:10%;    
+}
+
+.profileHeader {
+    width:100%;
+    height: 20%;
+    display: flex;
+}
+
+.bioContainer {
+    width:100%;
+    height:10%;
+    color:white;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.bioContainer p {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.postContainer {
+    width:100%;
+    height:70%;
+}
+
+.pad {
+    width:90%;
+    height:100%;
+}
+
+.iconContainer {
+    height:100%;
+    width: 15%;
+}
+
+.statsContainer {
+    height:100%;
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.statsContainer > div {
+    width:100%;
+    height:100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bioContainer input {
+  width: 100%;
+  font-size: 16px;
+  padding-left: 25px;
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.postContainer {
+    width: 100%;
+    height: 70%;
+    background-color: #112336;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.postCard {
+    background-color: #375676;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.postCard img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.postCard p {
+    margin: 0;
+    padding: 10px;
+    height: 30%;
+    overflow: hidden;
+    font-size: 14px;
+    color: white;
+}
+
+.profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
