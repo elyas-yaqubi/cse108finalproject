@@ -22,6 +22,9 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret")
+
+
 # Read environment variable
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-fallback')
 db_path = os.environ.get('DATABASE_URL', 'fallback.db')
