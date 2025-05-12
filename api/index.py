@@ -60,6 +60,15 @@ class User(UserMixin):
 
     @staticmethod
     def get_by_username(username):
+        
+        db_path = os.environ.get("DATABASE_URL", "api/database.sqlite")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("SELECT u_userId, u_username, u_password FROM user WHERE u_username = ?", (username,))
+        row = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return row
         conn = openConnection(DB_FILE)
         cursor = conn.cursor()
         cursor.execute("SELECT u_userId, u_username, u_password FROM user WHERE u_username = ?", (username,))
