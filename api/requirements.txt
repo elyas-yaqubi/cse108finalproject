@@ -1,3 +1,5 @@
 Flask
 flask-cors
 dotenv
+passlib
+bcrypt==3.2.0
