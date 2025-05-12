@@ -209,17 +209,28 @@ def register():
 #             cursor.close()
 #         closeConnection(conn, DB_FILE)
 
-@app.route('/login', methods=['POST'])
+@app.route("/login", methods=["POST"])
 def login():
-    data = request.json
-    username = data.get('username')
-    password = data.get('password')
+    try:
+        data = request.get_json()
+        username = data.get("username")
+        password = data.get("password")
 
-    user = User.get_by_username(username)
-    if user and bcrypt.verify(password, user[2]):  # 2 is the hashed password
-        login_user(user)
-        return jsonify({'message': 'Login successful'}), 200
-    return jsonify({'error': 'Invalid username or password'}), 401
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT u_userId, u_username, u_password FROM user WHERE u_username = ?", (username,))
+        user = cursor.fetchone()
+
+        if user and bcrypt.verify(password, user["u_password"]):
+            return jsonify({"message": "Login successful"}), 200
+        else:
+            return jsonify({"error": "Invalid username or password"}), 401
+
+    except Exception as e:
+        logger.error("🔥 Login error: %s", repr(e))
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/upload', methods=['POST'])
 @login_required
