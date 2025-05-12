@@ -14,6 +14,11 @@ import random
 from dotenv import load_dotenv
 load_dotenv()
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 app = Flask(__name__)
 
@@ -108,6 +113,13 @@ def closeConnection(_conn, _dbFile):
         print("successfully closed connection")
     except Error as e:
         print(e)
+        
+        
+@app.route("/ping")
+def ping():
+    logger.info("Ping route was called")
+    return {"status": "ok"}
+
 
 
 @app.route("/register", methods=["POST"])
