@@ -11,6 +11,10 @@ from sqlite3 import Error
 from base64 import b64encode
 import random
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 app = Flask(__name__)
 
 # Read environment variable
@@ -18,7 +22,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-fallback')
 db_path = os.environ.get('DATABASE_URL', 'fallback.db')
 
 
-app.secret_key = 'muchSecretVeryKey'
+# app.secret_key = 'muchSecretVeryKey'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
